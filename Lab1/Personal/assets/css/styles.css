@@ -2,7 +2,7 @@ body {
     font: normal 18xp 'Montserrant', sans-serif;
     color: #556070
     }
-    .header-background {
+    .header__background {
         background-color: #FF7410;
         width: 100%;
         height: 400px;
