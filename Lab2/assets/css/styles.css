@@ -240,8 +240,8 @@ background: #1f1e1e5b;
     position: absolute;
     width: 1650px;
     height: 36px;
-    margin-left: 135px;
     margin-top: 8px;
+    margin-left: 135px;
     display: flex;
 }
 .frame2_text {
