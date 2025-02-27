@@ -36,14 +36,28 @@
                         <img src="./images/tea_cup.png" alt="">
                     </div>
                     <div class="frame1_search_string">
-                        <a class="btn_search" href="#">
+                        <form class="btn_search"> <!-- Form для обробки данних з пошуку і відправки-->
                             <div class="searchtext_dandruff">
                                 <div class="dandruff">
                                     <img src="./images/dandruff.png" alt="">
                                 </div>
-                                <div class="searchtext">Search for tea, leaves</div>
+                                <input
+                                    type="text"
+                                    class="searchtext"
+                                    placeholder="Search for tea, leaves">
                             </div>
-                        </a>
+                        </form>
+                        <form class="btn_search small_search">
+                            <div class="searchtext_dandruff">
+                                <div class="dandruff">
+                                    <img src="./images/dandruff.png" alt="">
+                                </div>
+                                <input
+                                    type="text"
+                                    class="searchtext"
+                                    placeholder="Search">
+                            </div>
+                        </form>
                     </div>
                     <div class="frame1_pages">
                         <div class="pages">
@@ -83,7 +97,7 @@
                             </a>
                         </div>
                     </div>
-                    <img src="./images/Big.image.tea.png" alt="">
+                    <img class="Big_tea_img" src="./images/Big.image.tea.png" alt="">
                 </div>
             </header>
             <main>

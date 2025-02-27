@@ -1,17 +1,30 @@
-body {
-background: #1f1e1e5b;
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+* {
+    margin: 0;
+    padding: 0;
 }
 
+
 .container {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     height: auto;
+    min-height: 100%;
+    width: 100%;
 }
 .frame1 {
     position: relative;
-    width: 100%;
+    width: 1920px;
     height: 86px;
     background: #ffffff;
-    /* border: 1px solid #004F44 ; */
+    flex-grow: 1;
+    display: flex;
 }
 .name {
     position: absolute;
@@ -135,14 +148,19 @@ background: #1f1e1e5b;
     position: absolute;
     width: 201px;
     height: 18px;
-    margin-left: 32px;
     margin-top: 3px;
+    margin-left: 26px;
     line-height: 18px;
     font-size: 20px;
     font-weight: 500;
     font-family: 'Manrope', sans-serif;
     color: #666666;
     opacity: 70%;
+    outline: 0;
+    border: 0;
+}
+.small_search {
+    display: none;
 }
 .frame1_pages {
     position: absolute;
@@ -231,10 +249,11 @@ background: #1f1e1e5b;
 }
 .frame2 {
     position: relative;
-    width: 100%;
+    width: 1920px;
     height: 52px;
     background: #1E3932;
-    /* border: 1px solid #004F44; */
+    flex-grow: 1;
+    display: flex;
 }
 .frame2_text_btn {
     position: absolute;
@@ -275,8 +294,8 @@ background: #1f1e1e5b;
 }
 .frame3 {
     position: relative;
-    width: 100%;
-    height: 805px;
+    width: 1920px;
+    height: 815px;
     background-color: rgba(136, 180, 78, 0.56);
     display: flex;
 }
@@ -310,20 +329,20 @@ background: #1f1e1e5b;
     width: 149px;
     height: 149px;
     margin-left: 2px;
-    margin-top: 662px;
+    margin-top: 666px;
 }
 .frame3_herbal2 {
     position: absolute;
     width: 71px;
     height: 118px;
-    margin-left: 1816px;
+    margin-left: 1849px;
     margin-top: 353.96px;
 }
 .frame3_herbal3 {
     position: absolute;
     width: 92px;
     height: 181px;
-    margin-left: 1795px;
+    margin-left: 1828px;
 }
 .frame3_button {
     position: absolute;
@@ -352,14 +371,245 @@ background: #1f1e1e5b;
     line-height: 120%;
     font-weight: 700;
     font-family: 'Manrope', sans-serif;
+    display: flex;
+    justify-content: center;
 }
 .btn_arrow {
     height: 30px;
 }
 .Big_tea_img {
-    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+}
+
+@media (max-width:1919px) {
+    .frame1 {
+        position: relative;
+        width: 100%;
+        height: 86px;
+        background-color: #ffffff;
+    }
+    .frame2 {
+        position: relative;
+        width: 100%;
+        height: 52px;
+        background-color: #1E3932;
+    }
+    .frame3 {
+        position: relative;
+        width: 100%;
+        height: 815px;
+        background-color: rgba(136, 180, 78, 0.56);
+    }
+    .frame1_profile_line_cart {
+        position: absolute;
+        width: 72px;
+        height: 24px;
+        margin-left: calc(100vw - 90px);
+        margin-top: 31px;
+        display: flex;
+        align-items: center;
+    }
+    .frame1_search_string {
+        position: absolute;
+        width: calc(15vw + 20px);
+        height: 56px;
+        margin-left: calc(99vw - 350px);
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+    }
+    .frame1_pages {
+        position: absolute;
+        width: 476px;
+        height: 32px;
+        margin-left: 330px;
+        margin-top: 27px;
+        display: flex;
+    }
+    .btn_frame2 {
+        position: absolute;
+        width: 132px;
+        height: 36px;
+        margin-left: calc(100vw - 400px);
+        border: 1px solid #ffffff;
+        border-radius: 50px;
+        text-decoration: none;
+    }
+    .frame3_herbal2 {
+        position: absolute;
+        width: 71px;
+        height: 118px;
+        right: 0;
+        margin-top: 353.96px;
+    }
+    .frame3_herbal3 {
+        position: absolute;
+        width: 92px;
+        height: 181px;
+        right: 0;
+    }
+    .Big_tea_img {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+@media (max-width: 1340px) {
+    .Big_tea_img {
+        display: none;
+    }
+}
+@media (max-width: 1340px) {
+    .container {
+        flex-direction: column;
+        display: flex;
+    }
+    .frame1 {
+        position: relative;
+        width: 100%;
+        height: 86px;
+        background-color: #ffffff;
+    }
+    .frame2 {
+        position: relative;
+        width: 100%;
+        height: 52px;
+        background-color: #1E3932;
+    }
+    .frame3 {
+        position: relative;
+        width: 100%;
+        height: 815px;
+        background-color: rgba(136, 180, 78, 0.56);
+    }
+    .name {
+        font-size: 36px;
+        margin-left: 45px;
+    }
+    .tea_cup {
+        position: absolute;
+        width: 32px;
+        height: 30px;
+        margin-left: 3px;
+        margin-top: 17px;
+    }
+    .frame1_profile_line_cart {
+        position: absolute;
+        width: 72px;
+        height: 24px;
+        margin-left: calc(100vw - 100px);
+        margin-top: 31px;
+        display: flex;
+        align-items: center;
+    }
+    .frame1_search_string {
+        position: absolute;
+        width: calc(15vw + 20px);
+        height: 56px;
+        margin-left: calc(99vw - 350px);
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+    }
+    .frame1_pages {
+        position: absolute;
+        width: 476px;
+        height: 32px;
+        margin-left: 230px;
+        margin-top: 27px;
+        display: flex;
+    }
+    .frame3_herbal2 {
+        position: absolute;
+        width: 71px;
+        height: 118px;
+        right: 0;
+        margin-top: 353.96px;
+    }
+    .frame3_herbal3 {
+        position: absolute;
+        width: 92px;
+        height: 181px;
+        right: 0;
+    }
+}
+@media (max-width: 1120px) {
+    .frame2_text {
+        display: none;
+    }
+}
+@media (max-width: 1070px) {
+    .pages {
+        display: none;
+    }
+}
+@media (max-width: 720px) {
+    .name {
+        font-size: 30px;
+        margin-left: 46px;
+        margin-top: 26px;
+    }
+    .frame3_text1 {
+        font-size: 24px;
+        margin-left: 10px;
+    }
+    .frame3_text2 {
+        font-size: 32px;
+        margin-left: 10px;
+    }
+    .frame3_button {
+        width: 260px;
+        margin-top: 210px;
+        margin-left: 20px;
+    }
+    .frame3_text {
+        font-size: 16px;
+        margin-left: 5px;
+        display: flex;
+        justify-content: center;
+    }
+    .frame1_search_string {
+        position: absolute;
+        width: 100px;
+        height: 56px;
+        margin-left: calc(80vw - 120px);
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+    }
+    .small_search {
+        display: flex;
+        width: 150px;
+        height: 20px;
+        padding: 10px;
+        border: 1px solid #6C757D;
+        border-radius: 10px;
+        background-color: #ffffff;
+    }
+    .btn_search:not(.small_search) {
+       display: none;
+    }
+    .searchtext_dandruff {
+        width: auto;
+        margin-left: 2px;
+        margin-top: 0;
+        width: 50px;
+    }
+    .dandruff {
+        width: 20px;
+        height: 20px;
+    }
+    .searchtext {
+        display: block; /* щоб зробити елемент блоковим, тому я прибрав йогоdisplay: none; */
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        color: #666666;
+        background: none;
+    }
 }
