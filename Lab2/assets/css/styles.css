@@ -710,6 +710,11 @@ html, body {
     .Big_tea_img_2 {
         display: block;
     }
+    .frame_AboutUs_Img {
+        margin-left: 20px;
+        display: flex;
+        gap: 30px;
+    }
 }
 @media (max-width: 1120px) {
     .frame2_text {
@@ -803,5 +808,11 @@ html, body {
     }
     .frame3_herbal1 {
         display: none;
+    }
+    .frame_AboutUs_Img {
+        margin-left: 20px;
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
     }
 }
