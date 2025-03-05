@@ -505,6 +505,54 @@ html, body {
     top: 0;
     left: 0;
 }
+.frame_AboutUs {
+    position: relative;
+    height: auto;
+    padding: 40px;
+    background-color: #004F44;
+}
+.frame_AboutUs_Padding {
+    background-color: #EEF0DC;
+    padding: 20px;
+}
+.frame_AboutUs_Title {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.frame_AboutUs_TextImg {
+    display: flex;
+    height: auto;
+}
+.frame_AboutUs_Text {
+    width: 50%;
+    text-align: justify;
+    text-indent: 35px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+.frame_AboutUs_Text p {
+    margin: 0 0 15px 0;
+}
+.frame_AboutUs_Img {
+    margin-left: 160px;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+.AboutUs_LeftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.AboutUs_LeftColumn img {
+    width: 100%;
+    max-width: 300px;
+}
+.AboutUs_RightColumn img {
+    width: 100%;
+    max-width: 300px;
+}
 
 @media (max-width:1919px) {
     .frame1 {
