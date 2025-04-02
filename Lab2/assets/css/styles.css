@@ -135,6 +135,7 @@ header {
     border: 1px solid #6C757D;
     border-radius: 8px;
     cursor: text;
+    align-items: center;
 }
 .searchtext_dandruff {
     position: relative;
@@ -166,6 +167,21 @@ header {
 }
 .small_search {
     display: none;
+}
+.search_btn {
+    position: absolute;
+    margin-left: 250px;
+    margin-bottom: 2px;
+    padding: 5px 10px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.search_btn:hover {
+    background-color: rgb(155, 155, 155);
 }
 .frame1_pages {
     position: absolute;
@@ -548,6 +564,59 @@ header {
     width: 100%;
     max-width: 300px;
 }
+.footer {
+    height: 300px;
+    width: 100%;
+    background-color: #EEF0DC;
+}
+.footer_elements {
+    display: flex;
+    justify-content: space-between;
+    height: 260px;
+    margin: 20px 50px 20px 50px;
+    border: 1px solid black;
+}
+.author {
+    width: 24%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.author_title {
+    margin-top: 10px;
+    font-size: 32px;
+}
+.author_name_groop {
+    margin-top: 10px;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+}
+.author_photo {
+    height: 150px;
+    width: auto;
+}
+.author_photo img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+}
+.contact {
+    width: 24%;
+    height: 100%;
+    border: 1px solid black;
+}
+.account {
+    width: 24%;
+    height: 100%;
+    border: 1px solid black;
+}
+.findUs {
+    width: 24%;
+    height: 100%;
+    border: 1px solid black;
+}
 
 @media (max-width:1919px) {
     .frame1 {
@@ -757,6 +826,7 @@ header {
         margin-top: 15px;
         display: flex;
         align-items: center;
+        z-index: 10;
     }
     .small_search {
         display: flex;
@@ -766,6 +836,7 @@ header {
         border: 1px solid #6C757D;
         border-radius: 10px;
         background-color: #ffffff;
+        z-index: 11;
     }
     .btn_search:not(.small_search) {
        display: none;
@@ -788,6 +859,22 @@ header {
         font-size: 14px;
         color: #666666;
         background: none;
+    }
+    .search_btn {
+        position: absolute;
+        margin-left: 250px;
+        margin-bottom: 2px;
+        padding: 5px 10px;
+        background-color: gray;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 20px;
+        display: none;
+    }
+    .search_btn:hover {
+        background-color: rgb(155, 155, 155);
     }
     .Big_tea_img_2 {
         display: none;

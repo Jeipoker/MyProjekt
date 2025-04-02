@@ -36,7 +36,7 @@
                         <img src="./images/tea_cup.png" alt="">
                     </div>
                     <div class="frame1_search_string">
-                        <form class="btn_search"> <!-- Form для обробки данних з пошуку і відправки-->
+                        <form class="btn_search" id="main-search-form">
                             <div class="searchtext_dandruff">
                                 <div class="dandruff">
                                     <img src="./images/dandruff.png" alt="">
@@ -44,10 +44,12 @@
                                 <input
                                     type="text"
                                     class="searchtext"
+                                    id="main-search-input"
                                     placeholder="Search for tea, leaves">
+                                    <button type="submit" id="main-search-btn" class="search_btn" style="display: none;">Шукати</button>
                             </div>
                         </form>
-                        <form class="btn_search small_search">
+                        <form class="btn_search small_search" id="small-search-form">
                             <div class="searchtext_dandruff">
                                 <div class="dandruff">
                                     <img src="./images/dandruff.png" alt="">
@@ -55,7 +57,9 @@
                                 <input
                                     type="text"
                                     class="searchtext"
+                                    id="small-search-input"
                                     placeholder="Search">
+                                    <button type="submit" id="small-search-btn" class="search_btn" style="display: none;">Шукати</button>
                             </div>
                         </form>
                     </div>
@@ -162,7 +166,23 @@
                 </div>
             </main>
             <footer class="footer">
-                <!-- footer content -->
+                <div class="footer_elements">
+                    <div class="author">
+                        <h2 class="author_title">Author</h2>
+                        <div class="author_name_groop">
+                            <h3>Кушнеров Андрій</h3>
+                            <p>КІ2-24-3</p>
+                        </div>
+                        <div class="author_photo">
+                            <img src="images/MyPhoto.png" alt="">
+                        </div>
+                    </div>
+                    <div class="contact">
+                        <h2 class="footer_contact">Contact</h2>
+                    </div>
+                    <div class="account"></div>
+                    <div class="findUs"></div>
+                </div>
             </footer>
         </div>
         <script src="scripts/main.js"></script>
