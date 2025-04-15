@@ -53,49 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Збігів не знайдено');
         }
     }
-    // обробка введення в основному пошуку
-    // const mainInput = document.getElementById('main-search-input');
-    // const mainButton = document.getElementById('main-search-btn');
-    // const mainForm = document.getElementById('main-search-form');
-    // mainInput.addEventListener('input', function() {
-    //     const query = this.value.trim();
-    //     mainButton.style.display = query ? 'inline-block' : 'none'; // Показуємо/ховаємо кнопку
-    // });
-    // mainForm.addEventListener('submit', function(event) {
-    //     event.preventDefault();
-    //     const query = mainInput.value.trim();
-    //     if (query) {
-    //         scrollToFirstMatch(query);
-    //     }
-    // });
-    // // обробка введення в малому пошуку
-    // const smallInput = document.getElementById('small-search-input');
-    // const smallButton = document.getElementById('small-search-btn');
-    // const smallForm = document.getElementById('small-search-form');
-    // smallInput.addEventListener('input', function() {
-    //     const query = this.value.trim();
-    //     smallButton.style.display = query ? 'inline-block' : 'none'; // Показуємо/ховаємо кнопку
-    // });
-    // smallForm.addEventListener('submit', function(event) {
-    //     event.preventDefault();
-    //     const query = smallInput.value.trim();
-    //     if (query) {
-    //         scrollToFirstMatch(query);
-    //     }
-    // });
-    // Функція для ініціалізації пошуку
-    function initializeSearch(inputId, buttonId, formId) {
+    function initializeSearch(inputId, formId) {
         const input = document.getElementById(inputId);
-        const button = document.getElementById(buttonId);
         const form = document.getElementById(formId);
-
-        if (input && button && form) {
-            input.addEventListener('input', function() {
-                const query = this.value.trim();
-                button.style.display = query ? 'inline-block' : 'none';
-                console.log(`Введено в ${inputId}:`, query); // Діагностика
-            });
-
+    
+        if (input && form) {
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
                 const query = input.value.trim();
@@ -104,14 +66,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollToFirstMatch(query);
                 }
             });
+    
+            input.addEventListener('input', function() {
+                const query = this.value.trim();
+                console.log(`Введено в ${inputId}:`, query); // Діагностика
+            });
         } else {
-            console.error(`Елементи для ${formId} не знайдені:`, { input, button, form });
+            console.error(`Елементи для ${formId} не знайдені:`, { input, form });
         }
     }
-    initializeSearch('main-search-input', 'main-search-btn', 'main-search-form');
+    initializeSearch('main-search-input', 'main-search-form');
 
     // Ініціалізація малого пошуку
-    initializeSearch('small-search-input', 'small-search-btn', 'small-search-form');
+    initializeSearch('small-search-input', 'small-search-form');
 
     // Перевірка при зміні розміру вікна
     window.addEventListener('resize', function() {
@@ -119,5 +86,27 @@ document.addEventListener('DOMContentLoaded', function() {
         if (smallForm && window.getComputedStyle(smallForm).display !== 'none') {
             console.log('Малий пошук видимий');
         }
+    });
+});
+
+// Для відкритя, закриття бургер меню при натисканні
+document.addEventListener("DOMContentLoaded", function () {
+    const menuButton = document.querySelector(".menu_button");
+    const menuContent = document.querySelector(".menu_content");
+
+    // Клік по кнопці меню, перевірка чи вмикати чи вимикати меню
+    menuButton.addEventListener("click", function (event) {
+        event.stopPropagation(); // щоб не спрацював document.click
+        menuContent.style.display = menuContent.style.display === "block" ? "none" : "block";
+    });
+
+    // Клік в самому меню, меню не закривати
+    menuContent.addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+
+    // Коли клік по будь-якій іншій частині сторінки, закривається меню
+    document.addEventListener("click", function () {
+        menuContent.style.display = "none";
     });
 });
