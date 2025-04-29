@@ -15,6 +15,7 @@ html, body {
     height: auto;
     min-height: 100%;
     width: 100%;
+    transition: filter 0.3s ease; /* Плавний перехід для ефекту */
 }
 header {
     display: flex;
@@ -248,7 +249,7 @@ header {
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     margin-left: 7px;
 }
 .btn_text_AboutUs2 {
@@ -262,7 +263,7 @@ header {
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
-    margin-top: 55px;
+    margin-top: 3px;
     margin-left: 7px;
 }
 .btn_text_Offers2 {
@@ -276,7 +277,7 @@ header {
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
-    margin-top: 105px;
+    margin-top: 3px;
     margin-left: 7px;
 }
 .btn_text_Shop2 {
@@ -290,7 +291,7 @@ header {
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
-    margin-top: 155px;
+    margin-top: 3px;
     margin-left: 7px;
 }
 .btn_text_Home2 {
@@ -304,7 +305,7 @@ header {
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
-    margin-top: 205px;
+    margin-top: 3px;
     margin-left: 7px;
 }
 .menu_container {
@@ -324,7 +325,7 @@ header {
 .menu_content {
     display: none;
     position: absolute;
-    height: 260px;
+    height: 225px;
     top: 100%;
     left: 0;
     background-color: white;
@@ -340,9 +341,32 @@ header {
     background-color: white;
     border-bottom: 1px solid #ddd;
     gap: 10px;
+    position: relative;
+    display: inline-block; 
 }
 .menu_content a:hover {
     background-color: #f1f1f1;
+}
+.pages a.active,
+.menu_content a.active {
+    text-decoration: none;
+}
+.pages a::after,
+.menu_content a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+.pages a.active::after,
+.menu_content a.active::after {
+    transform: scaleX(1);
 }
 .frame2 {
     position: relative;
@@ -553,7 +577,6 @@ header {
     justify-content: space-between;
     height: 260px;
     margin: 20px 50px 20px 50px;
-    border: 1px solid black;
 }
 .author {
     width: 24%;
@@ -650,16 +673,106 @@ header {
 .support_email:hover::after, .support_tel:hover::after {
     width: 100%;
 }
-
 .account {
     width: 24%;
     height: 100%;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer_account_title {
+    margin-top: 10px;
+    font-size: 32px;
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+}
+.footer_account_title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(128, 128, 128, 0.3);
+}
+.account_elements {
+    display: flex;
+    flex-direction: column;
+}
+.account_MyAccount {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    position: relative;
+}
+.account_LoginRegister {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    position: relative;
+}
+.account_Logout {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    position: relative;
+}
+.account_MyAccount::after, .account_LoginRegister::after, .account_Logout::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: rgba(128, 128, 128, 0.3);
+    transition: width 0.4s ease;
+}
+.account_MyAccount:hover::after, .account_LoginRegister:hover::after, .account_Logout:hover::after{
+    width: 100%;
 }
 .findUs {
     width: 24%;
     height: 100%;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer_findUs_title {
+    margin-top: 10px;
+    font-size: 32px;
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+}
+.footer_findUs_title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(128, 128, 128, 0.3);
+}
+.findUs_socialIcons {
+    margin-top: 25px;
+}
+.findUs_socialIcons a {
+    margin: 0 10px;
+    font-size: 32px;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.findUs_socialIcons a:hover {
+    color: #007bff;
 }
 
 @media (max-width:1919px) {
@@ -925,4 +1038,71 @@ header {
         gap: 30px;
         flex-direction: column;
     }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Стилі для футера */
+.account {
+    padding: 20px;
+}
+
+.footer_account_title {
+    margin-bottom: 10px;
+}
+
+.account_elements a {
+    display: block;
+    margin: 5px 0;
+    text-decoration: none;
+    color: #333;
+}
+
+.account_elements a:hover {
+    text-decoration: underline;
+}
+.container.blur {
+    filter: blur(5px); /* Ефект розмиття */
 }
