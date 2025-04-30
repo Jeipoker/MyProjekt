@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Visit cards</title>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <script type="text/javascript" language="JavaScript">
+            var name = prompt('Input name','');
+            var position = prompt('Input position','');
+            var phone = prompt('Input phone','');
+
+            // Функція для форматування номера телефону
+            function formatPhoneNumber(phone) {
+                // Видаляємо всі нечислові символи
+                phone = phone.replace(/\D/g, '');
+                if (phone.length >= 10) {
+                    return phone.replace(/(\d{3})(\d{3})(\d{2})(\d{2})/, '$1-$2-$3-$4');
+                }
+                return phone; // Повертаємо як є, якщо номер коротший
+            }
+            var formattedPhone = formatPhoneNumber(phone); // присвоюємо до нової змінної
+
+            var visitcard = ' <TABLE width="100%" border="0">'
+                            +' <TR>'
+                            +' <TD align="CENTER" valign="CENTER">'
+                            +' <IMG src="images/visit_card.png">'
+                            +' </TD>'
+                            +' <TD align="CENTER">'
+                            +' <B>' + name + '</B><BR>'
+                            +' <I>' + position + '</I><BR>'
+                            +' <FONT color="blue">' + formattedPhone + '</FONT>'
+                            +' </TD>'
+                            +' </TR>'
+                            +' </TABLE>';
+
+            document.write('<TABLE width="100%" border="0" align="CENTER">');
+            for(var y=0; y<12; y++) {
+                document.write('<TR>');
+                for(var x=0; x<3; x++) {
+                    document.write( '<TD align="CENTER" style="border-style: dashed; borderwidth:thin;">');
+                    document.write( visitcard );
+                    document.write('</TD>');
+                }
+                document.write('</TR>');
+            }
+            document.write('</TABLE>'); 
+        </script>
+    </body>
+</html>
