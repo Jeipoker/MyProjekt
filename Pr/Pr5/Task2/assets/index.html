@@ -2,12 +2,25 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>My test page</title>
+        <title>Sayings of famous authors</title>
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
         <link href="css/styles.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        
-        <script src="scripts/main.js"></script>
+        <div class="container">
+            <h2>Вислови відомих авторів</h2>
+            <div class="link-row">
+                <a  href="javascript: say('Кожному мила своя сторона. ')">Г. Сковорода </a>
+                <a  href="javascript: say('Усвідомлена любов до свого народу не поєднується з ненавистю до інших. ')">Д. Лихачев </a>
+                <a  href="javascript: say('Ті, що виїздять за море, міняють небо, а не душу. ')">Горацій </a>
+                <a  href="javascript: say('Для нас дорогі батьки, дорогі діти, близькі, родичі; але всі уявлення про любов до чого-небудь поєднані в одному слові «вітчизна».')">Цицерон </a>
+                <a  href="javascript: say('Мова — це глибина тисячоліть')">М. Шумило</a>
+            </div>
+        </div>
+        <SCRIPT LANGUAGE="JavaScript">
+            function say(message){
+                alert(message)
+            }
+        </SCRIPT>
     </body>
 </html>
