@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap</title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Навігація -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="logo-circle">A</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#whatido">What I do</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Let's Talk</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основний контент -->
+    <div class="container my-5">
+        <div class="top-section">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4">Hello, Andriy</h1>
+                    <p class="lead">I'm UX Designer and I make products that people love</p>
+                    <p class="mb-4">Working actively in Avia.com</p>
+                    <button class="btn btn-custom">Portfolio</button>
+                    <button class="btn btn-custom">Let's Talk</button>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="./images/MyPhoto.png" alt="Andriy Profile" class="profile-img">
+                </div>
+            </div>
+        </div>
+
+        <!-- Секція What I do -->
+        <div id="whatido" class="row mt-5">
+            <h2 class="text-center mb-4">What I do</h2>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./images/ui-ux.png" class="card-img-top" alt="UI Design Icon" width="40px">
+                    <div class="card-body">
+                        <h5 class="card-title">UI Design</h5>
+                        <p class="card-text">I can help you redesign a site to improve the user experience.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./images/ui-design.png" class="card-img-top" alt="Web Design Icon" width="40px">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Design</h5>
+                        <p class="card-text">I can help you create a great site that fits your needs.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="./images/icons8-taxi-app-48.png" class="card-img-top" alt="App Design Icon">
+                    <div class="card-body">
+                        <h5 class="card-title">App Design</h5>
+                        <p class="card-text">I can design an app with HTML, CSS, and JavaScript.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карусель -->
+        <div id="carouselExample" class="carousel slide mt-5" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="carousel-card">
+                        <img src="./images/istockphoto-96334651-2048x2048.jpg" class="d-block w-100" alt="Sauri ERP 2.0">
+                        <h5 class="mt-3">Sauri ERP 2.0</h5>
+                        <p class="card-text">The purpose of this platform is to improve the experience of its users when managing orders, product stock, inventory reports with a very friendly interface to lighten the workload of our users.</p>
+                        <a href="#" class="btn btn-primary">Look</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-card">
+                        <img src="./images/istockphoto-881264382-2048x2048.jpg" class="d-block w-100" alt="Pinturas Goldfish">
+                        <h5 class="mt-3">Pinturas Goldfish</h5>
+                        <p class="card-text">This page aims to challenge our customers by paintings without going to the store! Only the answers YES! We created a default combination suggestions that were generated by Goldfish experts.</p>
+                        <a href="#" class="btn btn-primary">Look</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-card">
+                        <img src="./images/istockphoto-841282414-2048x2048.jpg" class="d-block w-100" alt="Comparaya - Estado peruano">
+                        <h5 class="mt-3">Comparaya - Estado peruano</h5>
+                        <p class="card-text">I designed this solution together with my friends, in which we had the invitation of Peruvian government to create a search engine for citizens to meet their candidates and cast a responsible and informed vote.</p>
+                        <a href="#" class="btn btn-primary">Look</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <footer class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <div></div> <!-- Порожній блок замість логотипу -->
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#whatido">What I do</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Let's Talk</a>
+                    </li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,6 +1,67 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Підсвічування кнопок
+    // const navButtons = document.querySelectorAll('.pages a, .menu_content a:not(.account_LoginRegister)');
+    // const sections = {
+    //     'Home': document.querySelector('.container'),
+    //     'AboutUs': document.querySelector('#about-us'),
+    //     'Contact': document.querySelector('.footer')
+    // };
+
+    // function removeActiveClass() {
+    //     navButtons.forEach(button => button.classList.remove('active'));
+    // }
+
+    // function setActiveButton(sectionId) {
+    //     removeActiveClass();
+    //     const buttons = document.querySelectorAll(`.btn_text_${sectionId}, .btn_text_${sectionId}2`);
+    //     buttons.forEach(button => button.classList.add('active'));
+    // }
+
+    // function checkVisibleSection() {
+    //     let currentSectionId = null;
+    //     let maxVisibleHeight = 0;
+
+    //     Object.entries(sections).forEach(([sectionId, section]) => {
+    //         if (!section) return;
+    //         const rect = section.getBoundingClientRect();
+    //         const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+
+    //         if (visibleHeight > maxVisibleHeight && visibleHeight > 0) {
+    //             maxVisibleHeight = visibleHeight;
+    //             currentSectionId = sectionId;
+    //         }
+    //     });
+
+    //     if (currentSectionId) {
+    //         setActiveButton(currentSectionId);
+    //     } else {
+    //         setActiveButton('Home');
+    //     }
+    // }
+
+    // const handleNavClick = (sectionId, selector) => {
+    //     return function (event) {
+    //         event.preventDefault();
+    //         setActiveButton(sectionId);
+    //         document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+    //     };
+    // };
+
+    // document.querySelector('.btn_text_Home')?.addEventListener('click', handleNavClick('Home', '.container'));
+    // document.querySelector('.btn_text_Home2')?.addEventListener('click', handleNavClick('Home', '.container'));
+    // document.querySelector('.btn_text_AboutUs')?.addEventListener('click', handleNavClick('AboutUs', '#about-us'));
+    // document.querySelector('.btn_text_AboutUs2')?.addEventListener('click', handleNavClick('AboutUs', '#about-us'));
+    // document.querySelector('.btn_text_Contact')?.addEventListener('click', handleNavClick('Contact', '.footer'));
+    // document.querySelector('.btn_text_Contact2')?.addEventListener('click', handleNavClick('Contact', '.footer'));
+
+    // window.addEventListener('scroll', checkVisibleSection);
+    // checkVisibleSection();
+
     const navButtons = document.querySelectorAll('.pages a, .menu_content a:not(.account_LoginRegister)');
+
+    const currentPage = window.location.pathname.includes('Shop.php') ? 'Shop' : 'Home';
+
+    // Секції для прокручування на index.php
     const sections = {
         'Home': document.querySelector('.container'),
         'AboutUs': document.querySelector('#about-us'),
@@ -17,33 +78,54 @@ document.addEventListener('DOMContentLoaded', function () {
         buttons.forEach(button => button.classList.add('active'));
     }
 
-    function checkVisibleSection() {
-        let currentSectionId = null;
-        let maxVisibleHeight = 0;
+    if (currentPage === 'Shop') {
+        setActiveButton('Shop');
+    } else {
+        function checkVisibleSection() {
+            let currentSectionId = null;
+            let maxVisibleHeight = 0;
 
-        Object.entries(sections).forEach(([sectionId, section]) => {
-            if (!section) return;
-            const rect = section.getBoundingClientRect();
-            const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+            Object.entries(sections).forEach(([sectionId, section]) => {
+                if (!section) return;
+                const rect = section.getBoundingClientRect();
+                const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
 
-            if (visibleHeight > maxVisibleHeight && visibleHeight > 0) {
-                maxVisibleHeight = visibleHeight;
-                currentSectionId = sectionId;
+                if (visibleHeight > maxVisibleHeight && visibleHeight > 0) {
+                    maxVisibleHeight = visibleHeight;
+                    currentSectionId = sectionId;
+                }
+            });
+
+            if (currentSectionId) {
+                setActiveButton(currentSectionId);
+            } else {
+                setActiveButton('Home');
             }
-        });
-
-        if (currentSectionId) {
-            setActiveButton(currentSectionId);
-        } else {
-            setActiveButton('Home');
         }
+
+        window.addEventListener('scroll', checkVisibleSection);
+        checkVisibleSection();
     }
 
     const handleNavClick = (sectionId, selector) => {
         return function (event) {
             event.preventDefault();
             setActiveButton(sectionId);
-            document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+            if (currentPage === 'Home' && selector) {
+                document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                if (['Home', 'AboutUs', 'Contact'].includes(sectionId)) {
+                    window.location.href = `index.php${sectionId === 'AboutUs' ? '#about-us' : sectionId === 'Contact' ? '#footer' : ''}`;
+                }
+            }
+        };
+    };
+
+    const handleShopClick = () => {
+        return function (event) {
+            event.preventDefault();
+            setActiveButton('Shop');
+            window.location.href = 'Shop.php';
         };
     };
 
@@ -53,9 +135,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('.btn_text_AboutUs2')?.addEventListener('click', handleNavClick('AboutUs', '#about-us'));
     document.querySelector('.btn_text_Contact')?.addEventListener('click', handleNavClick('Contact', '.footer'));
     document.querySelector('.btn_text_Contact2')?.addEventListener('click', handleNavClick('Contact', '.footer'));
-
-    window.addEventListener('scroll', checkVisibleSection);
-    checkVisibleSection();
+    document.querySelector('.btn_text_Shop')?.addEventListener('click', handleShopClick());
+    document.querySelector('.btn_text_Shop2')?.addEventListener('click', handleShopClick());
 
     // Пошук
     function findTextInDOM(node, query) {
@@ -138,53 +219,81 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Модальні вікна
     const container = document.querySelector('.container');
 
-    document.querySelector('.account_LoginRegister').addEventListener('click', function (e) {
+    // Показ модального вікна вибору (для .account_LoginRegister)
+    document.querySelector('.account_LoginRegister')?.addEventListener('click', (e) => {
         e.preventDefault();
         console.log('Login/Register clicked');
-        showChoiceModal();
+        showModal('profileModal');
+        updateProfileContent();
     });
 
-    function showChoiceModal() {
-        console.log('Opening choice modal');
-        const modal = document.getElementById('choiceModal');
+    // Показ модального вікна входу
+    document.getElementById('loginButton')?.addEventListener('click', () => {
+        console.log('Login button clicked');
+        showModal('loginModal', 'profileModal');
+    });
+
+    // Показ модального вікна реєстрації
+    document.getElementById('registerButton')?.addEventListener('click', () => {
+        console.log('Register button clicked');
+        showModal('registerModal', 'profileModal');
+    });
+
+    // Показ модального вікна профілю (для #openProfileModal)
+    const profileButton = document.getElementById('openProfileModal');
+    if (profileButton) {
+        profileButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Profile button clicked');
+            showModal('profileModal');
+            updateProfileContent();
+        });
+    }
+
+    // НОВИЙ ОБРОБНИК: Додано для .account_MyAccount для відкриття профілю
+    document.querySelector('.account_MyAccount')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('My Account clicked');
+        showModal('profileModal');
+        updateProfileContent();
+    });
+
+    // Закриття модальних вікон через хрестик
+    document.querySelectorAll('.close-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const modalId = btn.getAttribute('data-modal-id');
+            console.log('Close button clicked for modal:', modalId);
+            closeModal(modalId);
+        });
+    });
+
+    // Закриття при кліку поза модальним вікном
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal')) {
+            console.log('Window click outside modal, target:', e.target.id);
+            closeModal(e.target.id);
+        }
+    });
+
+    // Універсальна функція для показу модального вікна
+    function showModal(modalId, hideModalId = null) {
+        console.log(`Opening modal: ${modalId}`);
+        const modal = document.getElementById(modalId);
         if (modal) {
             modal.style.display = 'flex';
             container.classList.add('blur');
+            if (hideModalId) {
+                const hideModal = document.getElementById(hideModalId);
+                if (hideModal) hideModal.style.display = 'none';
+            }
         } else {
-            console.error('Choice modal not found');
-        }
-        return false;
-    }
-
-    function showLoginModal() {
-        console.log('Opening login modal');
-        const choiceModal = document.getElementById('choiceModal');
-        const loginModal = document.getElementById('loginModal');
-        if (choiceModal && loginModal) {
-            choiceModal.style.display = 'none';
-            loginModal.style.display = 'flex';
-            container.classList.add('blur');
-        } else {
-            console.error('Login modal or choice modal not found', { choiceModal, loginModal });
+            console.error(`Modal ${modalId} not found`);
         }
     }
 
-    function showRegisterModal() {
-        console.log('Opening register modal');
-        const choiceModal = document.getElementById('choiceModal');
-        const registerModal = document.getElementById('registerModal');
-        if (choiceModal && registerModal) {
-            choiceModal.style.display = 'none';
-            registerModal.style.display = 'flex';
-            container.classList.add('blur');
-        } else {
-            console.error('Register modal or choice modal not found', { choiceModal, registerModal });
-        }
-    }
-
+    // Універсальна функція для закриття модального вікна
     function closeModal(modalId) {
         console.log(`Closing modal: ${modalId}`);
         const modal = document.getElementById(modalId);
@@ -199,32 +308,32 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Обробники для кнопок модальних вікон
-    document.getElementById('loginButton')?.addEventListener('click', function () {
-        console.log('Login button clicked');
-        showLoginModal();
-    });
-
-    document.getElementById('registerButton')?.addEventListener('click', function () {
-        console.log('Register button clicked');
-        showRegisterModal();
-    });
-
-    // Обробники для хрестиків
-    document.querySelectorAll('.close-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-            const modalId = this.getAttribute('data-modal-id');
-            console.log('Close button clicked for modal:', modalId);
-            closeModal(modalId);
-        });
-    });
-
-    window.addEventListener('click', function (event) {
-        console.log('Window click, target:', event.target);
-        if (event.target.classList.contains('modal') && !event.target.closest('.account_LoginRegister')) {
-            closeModal('choiceModal');
-            closeModal('loginModal');
-            closeModal('registerModal');
+    // Функція для оновлення вмісту #profileContent
+    function updateProfileContent() {
+        const profileContent = document.getElementById('profileContent');
+        if (profileContent) {
+            if (window.loggedInUser) {
+                profileContent.innerHTML = `
+                    <h2>Welcome, ${window.loggedInUser.name || 'User'}!</h2>
+                    <p>Email: ${window.loggedInUser.email}</p>
+                `;
+            } else {
+                profileContent.innerHTML = `
+                    <h2>Select an action</h2>
+                    <button id="profileLoginButton">Sign in</button>
+                    <button id="profileRegisterButton">Register</button>
+                `;
+                document.getElementById('profileLoginButton')?.addEventListener('click', () => {
+                    console.log('Profile login button clicked');
+                    showModal('loginModal', 'profileModal');
+                });
+                document.getElementById('profileRegisterButton')?.addEventListener('click', () => {
+                    console.log('Profile register button clicked');
+                    showModal('registerModal', 'profileModal');
+                });
+            }
+        } else {
+            console.error('Profile content not found');
         }
-    });
+    }
 });

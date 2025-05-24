@@ -1,0 +1,1 @@
+a:2:{i:0;a:2:{s:5:"email";s:24:"kusnerovandrij@gmail.com";s:8:"password";s:60:"$2y$10$59LNi5MftJ47g/1gvqiYG.KH8Xj2RA1KNCZmLFw3qgxo/JSdZOM32";}i:1;a:3:{s:5:"email";s:27:"kusnerovandrij802@gmail.com";s:4:"name";s:6:"Andriy";s:8:"password";s:60:"$2y$10$9GYogeqYJeJcD70JRzz61.ShHWVJxy9h0.Qg2Eq5M5AhruMxYxYii";}}

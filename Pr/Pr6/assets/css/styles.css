@@ -1,0 +1,101 @@
+body {
+    background: linear-gradient(135deg, #6b48ff, #ff6b97);
+    min-height: 100vh;
+}
+.logo-circle {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #6b48ff;
+    margin-right: 20px;
+}
+.nav-link {
+    color: #fff !important;
+    margin: 0 15px;
+}
+.nav-link:hover {
+    color: #ff6b97 !important;
+}
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+}
+.btn-custom {
+    background-color: #fff;
+    color: #6b48ff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+.btn-custom:hover {
+    background-color: #ff6b97;
+    color: #fff;
+}
+.top-section {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    color: #000;
+}
+.card {
+    text-align: center;
+}
+.card-img-top {
+    height: auto;
+    margin: 20px auto;
+}
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.card-text {
+    font-size: 0.9rem;
+}
+.btn-primary:hover {
+    background-color: #6b48ff;
+}
+.carousel-card {
+    background-color: rgb(104, 103, 103);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    height: 100%;
+    color: #000;
+}
+.carousel-card .btn-primary {
+    margin-top: 10px;
+}
+.carousel-item img {
+    object-fit: cover;
+    height: 200px;
+}
+footer {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    color: #000;
+    margin-top: 30px;
+}
+footer .nav-link {
+    color: #000 !important;
+    margin: 0 15px;
+}
+footer .nav-link:hover {
+    color: #ff6b97 !important;
+}
+footer .social-icons a {
+    color: #000;
+    margin: 0 10px;
+    font-size: 1.5rem;
+}
+footer .social-icons a:hover {
+    color: #ff6b97;
+}
