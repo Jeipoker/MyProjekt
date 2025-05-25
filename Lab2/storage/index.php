@@ -155,8 +155,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link type="text/css" rel="stylesheet" href="../assets/fonts/fonts.css?v=24">
-    <link type="text/css" rel="stylesheet" href="../assets/css/styles.css?v=24">
+    <link type="text/css" rel="stylesheet" href="../assets/fonts/fonts.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -175,9 +175,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="vertical_line"></div>
                     </div>
                     <div class="cart">
-                        <a class="btn_cart" href="#">
+                        <button class="btn_cart">
                             <img src="../assets/images/cart.png" alt="Cart">
-                        </a>
+                            <span class="cart-count">0</span>
+                        </button>
+                        <div class="cart-modal">
+                            <div class="cart-dropdown" style="display: none;">
+                                <div class="cart-header">
+                                    <h3>Кошик</h3>
+                                    <button class="cart-close">×</button>
+                                </div>
+                                <div class="cart-items"></div>
+                                <div class="cart-footer">
+                                    <p class="cart-total">Загалом: 0 грн</p>
+                                    <button class="cart-clear">Очистити кошик</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tea_cup">
@@ -404,6 +418,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             window.loggedInUser = <?= json_encode($loggedInUser) ?>;
         </script>
     <?php endif; ?>
-    <script src="../assets/scripts/main.js?v=24"></script>
+    <script src="../assets/scripts/main.js"></script>
 </body>
 </html>

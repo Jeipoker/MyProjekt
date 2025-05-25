@@ -144,6 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         logMessage("Некоректна дія: $action");
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -155,9 +156,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link type="text/css" rel="stylesheet" href="../assets/fonts/fonts.css?v=24">
-    <link type="text/css" rel="stylesheet" href="../assets/css/Shop.css?v=24">
-    <link type="text/css" rel="stylesheet" href="../assets/css/styles.css?v=24">
+    <link type="text/css" rel="stylesheet" href="../assets/fonts/fonts.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/Shop.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="Shop_body">
@@ -177,9 +178,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="vertical_line"></div>
                         </div>
                         <div class="cart">
-                            <a class="btn_cart" href="#">
+                            <button class="btn_cart">
                                 <img src="../assets/images/cart.png" alt="Cart">
-                            </a>
+                                <span class="cart-count">0</span>
+                            </button>
+                            <div class="cart-modal">
+                                <div class="cart-dropdown" style="display: none;">
+                                    <div class="cart-header">
+                                        <h3>Кошик</h3>
+                                        <button class="cart-close">×</button>
+                                    </div>
+                                    <div class="cart-items"></div>
+                                    <div class="cart-footer">
+                                        <p class="cart-total">Загалом: 0 грн</p>
+                                        <button class="cart-clear">Очистити кошик</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="tea_cup">
@@ -238,109 +253,67 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h2 class="Shop_h2">Our Shop</h2>
                     <div class="Goods_container">
                         <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
+                            <img src="../assets/images/black.carp.png" alt="Карпатський Чорний">
+                            <h3>Карпатський Чорний</h3>
+                            <p class="description">Класичний чорний чай із Цейлону з насиченим смаком і легкими нотами карамелі. Ідеальний для ранкового ритуалу. Походить із найкращих плантацій Шрі-Ланки.</p>
+                            <p class="price">Ціна: 60 грн/100 г</p>
+                            <button class="add_to_cart" data-tea="Карпатський Чорний" data-price="60">Додати до кошика</button>
                         </div>
                         <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
+                            <img src="../assets/images/Sun.green.png" alt="Сонячний Зелений">
+                            <h3>Сонячний Зелений</h3>
+                            <p class="description">Ніжний китайський зелений чай Dragon Well із трав’яним ароматом і нотками свіжого горіха. Освіжає та заряджає енергією.</p>
+                            <p class="price">Ціна: 75 грн/100 г</p>
+                            <button class="add_to_cart" data-tea="Сонячний Зелений" data-price="75">Додати до кошика</button>
                         </div>
                         <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
+                            <img src="../assets/images/SlavaUkr.png" alt="Слава Україні">
+                            <h3>Слава Україні</h3>
+                            <p class="description">Унікальний бленд чорного чаю з Грузії з гречкою, медом і пелюстками соняшника. Солодкуватий смак із горіховими нотами.</p>
+                            <p class="price">Ціна: 90 грн/100 г</p>
+                            <button class="add_to_cart" data-tea="Слава Україні" data-price="90">Додати до кошика</button>
                         </div>
                         <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
+                            <img src="../assets/images/TivanUlun.png" alt="Лавандовий Улун">
+                            <h3>Лавандовий Улун</h3>
+                            <p class="description">Тайванський улун із легкою оксидацією та ароматом лаванди. Має квітковий смак із вершковим післясмаком.</p>
+                            <p class="price">Ціна: 110 грн/100 г</p>
+                            <button class="add_to_cart" data-tea="Лавандовий Улун" data-price="110">Додати до кошика</button>
                         </div>
                         <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
+                            <img src="../assets/images/CarpYag.png" alt="Ягідний Карпатський">
+                            <h3>Ягідний Карпатський</h3>
+                            <p class="description">Фруктовий бленд на основі ройбуша з ягодами малини, ожини та карпатськими травами. Без кофеїну, зігріває та освіжає.</p>
+                            <p class="price">Ціна: 80 грн/100 г</p>
+                            <button class="add_to_cart" data-tea="Ягідний Карпатський" data-price="80">Додати до кошика</button>
                         </div>
                         <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
+                            <img src="../assets/images/Dardjiling.png" alt="М'ятний Дарджилінг">
+                            <h3>М'ятний Дарджилінг</h3>
+                            <p class="description">Індійський чорний чай Дарджилінг із додаванням свіжої м’яти. Легкий, ароматний, із нотками мускатного винограду.</p>
+                            <p class="price">Ціна: 85 грн/100 г</p>
+                            <button class="add_to_cart" data-tea="М'ятний Дарджилінг" data-price="85">Додати до кошика</button>
                         </div>
                         <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
+                            <img src="../assets/images/Pion.png" alt="Білий Піон">
+                            <h3>Білий Піон</h3>
+                            <p class="description">Делікатний білий чай із провінції Фуцзянь із м’яким квітковим смаком і легкою солодкістю. Мінімальна обробка.</p>
+                            <p class="price">Ціна: 120 грн/100 г</p>
+                            <button class="add_to_cart" data-tea="Білий Піон" data-price="120">Додати до кошика</button>
                         </div>
                         <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
+                            <img src="../assets/images/ceremonial_new.png" alt="Матча Ceremonial">
+                            <h3>Матча Ceremonial</h3>
+                            <p class="description">Японська матча преміум-класу з яскравим зеленим кольором і багатим умамі-смаком. Ідеальна для церемоній.</p>
+                            <p class="price">Ціна: 150 грн/100 г</p>
+                            <button class="add_to_cart" data-tea="Матча Ceremonial" data-price="150">Додати до кошика</button>
                         </div>
                         <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
-                        </div>
-                        <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
-                        </div>
-                        <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
-                        </div>
-                        <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
-                        </div>
-                        <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
-                        </div>
-                        <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
-                        </div>
-                        <div class="product_card">
-                            <img src="product.jpg" alt="Назва товару">
-                            <h3>Назва товару</h3>
-                            <p class="description">Короткий опис товару, який розповідає про його основні переваги.</p>
-                            <p class="price">Ціна: 499 грн</p>
-                            <button class="add_to_cart">Додати до кошика</button>
+                            <img src="../assets/images/Imbur.png" alt="Імбирний Лайм">
+                            <h3>Імбирний Лайм</h3>
+                            <p class="description">Чорний чай із Цейлону з додаванням імбиру та цедри лайма. Пряний, освіжаючий, зігріває в холодні дні.</p>
+                            <p class="price">Ціна: 65 грн/100 г</p>
+                            <button class="add_to_cart" data-tea="Імбирний Лайм" data-price="65">Додати до кошика</button>
                         </div>
                     </div>
                 </div>
@@ -438,6 +411,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </script>
     <?php endif; ?>
 
-    <script src="../assets/scripts/main.js?v=24"></script>
+    <script src="../assets/scripts/main.js"></script>
+    <script src="../assets/scripts/Shop.js"></script>
 </body>
 </html>
