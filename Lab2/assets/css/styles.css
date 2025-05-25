@@ -1137,11 +1137,6 @@ header {
     filter: blur(5px);
 }
 
-/* Стилі для футера */
-.account {
-    padding: 20px;
-}
-
 .footer_account_title {
     margin-bottom: 10px;
 }

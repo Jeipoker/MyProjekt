@@ -156,8 +156,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link type="text/css" rel="stylesheet" href="../assets/fonts/fonts.css?v=24">
-    <link type="text/css" rel="stylesheet" href="../assets/css/styles.css?v=24">
     <link type="text/css" rel="stylesheet" href="../assets/css/Shop.css?v=24">
+    <link type="text/css" rel="stylesheet" href="../assets/css/styles.css?v=24">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="Shop_body">

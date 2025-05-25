@@ -374,13 +374,13 @@ header {
     height: auto;
     background-color: #EEF0DC;
     z-index: 10;
+    text-align: center;
 }
 .Shop_h2 {
     width: 134px;
-    margin-left: 743px;
     font-size: 32px;
-    margin-top: 15px;
-    margin-bottom: 30px;
+    margin-top: 15px auto 30px;
+    display: inline-block;
 }
 .Goods_container {
     display: flex;
@@ -808,11 +808,6 @@ header {
 /* Ефект розмиття для основного контейнера сторінки */
 .container.blur {
     filter: blur(5px);
-}
-
-/* Стилі для футера */
-.account {
-    padding: 20px;
 }
 
 .footer_account_title {
