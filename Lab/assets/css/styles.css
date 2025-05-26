@@ -199,7 +199,7 @@ header {
     color: #333;
 }
 .cart-item button {
-    background-color: #dc3545;
+    background-color: #592222;
     color: white;
     border: none;
     border-radius: 4px;
@@ -207,7 +207,7 @@ header {
     cursor: pointer;
 }
 .cart-item button:hover {
-    background-color: #c82333;
+    background-color: #592222;
 }
 .cart-footer {
     padding: 10px;
@@ -221,14 +221,14 @@ header {
 .cart-clear {
     width: 100%;
     padding: 8px;
-    background-color: #dc3545;
+    background-color: #592222;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 .cart-clear:hover {
-    background-color: #c82333;
+    background-color: #592222;
 }
 .tea_cup {
     position: absolute;
@@ -295,6 +295,7 @@ header {
     position: relative;
     width: 476px;
     height: 32px;
+    gap: auto;
 }
 .btn_text_Contact {
     position: absolute;
@@ -302,7 +303,7 @@ header {
     height: 24px;
     text-decoration: none;
     color: #232321;
-    margin-left: 392.68px;
+    margin-left: 300px;
     line-height: auto;
     font-size: 20px;
     font-weight: 400;
@@ -312,7 +313,7 @@ header {
     position: absolute;
     width: 88px;
     height: 24px;
-    margin-left: 272.68px;
+    margin-left: 180px;
     text-decoration: none;
     color: #232321;
     line-height: auto;
@@ -1157,6 +1158,54 @@ header {
         gap: 30px;
         flex-direction: column;
     }
+    .frame1_profile_line_cart {
+        margin-left: 580px;
+        z-index: 100; /* Зберігаємо високий z-index */
+    }
+    .footer {
+    height: auto; /* Дозволяємо футеру адаптуватися до вмісту */
+    min-height: 300px; /* Зберігаємо мінімальну висоту */
+  }
+
+  .footer_elements {
+    flex-direction: column; /* Розташовуємо секції вертикально */
+    align-items: center;
+    margin: 20px 15px; /* Зменшуємо бічні відступи */
+    height: auto; /* Адаптивна висота */
+  }
+
+  .author,
+  .support,
+  .account,
+  .findUs {
+    width: 100%; /* Кожна секція займає повну ширину */
+    margin-bottom: 20px; /* Додаємо відступ між секціями */
+  }
+
+  .footer_author_title,
+  .footer_support_title,
+  .footer_account_title,
+  .footer_findUs_title {
+    font-size: 24px; /* Зменшуємо розмір заголовків */
+  }
+
+  .author_name_groop,
+  .support_email,
+  .support_tel,
+  .account_MyAccount,
+  .account_LoginRegister,
+  .account_Logout {
+    font-size: 14px; /* Зменшуємо розмір тексту */
+  }
+
+  .findUs_socialIcons a {
+    font-size: 24px; /* Зменшуємо розмір іконок */
+    margin: 0 8px; /* Зменшуємо відступи між іконками */
+  }
+
+  .author_photo {
+    height: 100px; /* Зменшуємо розмір фото */
+  }
 }
 
 /* Стилі для модального вікна */

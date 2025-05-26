@@ -230,7 +230,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="pages">
                             <a class="btn_text_Contact" href="#footer">Contact</a>
                             <a class="btn_text_AboutUs" href="index.php#about-us">About Us</a>
-                            <a class="btn_text_Offers" href="Offers.php">Offers</a>
                             <a class="btn_text_Shop" href="Shop.php">Shop</a>
                             <a class="btn_text_Home" href="index.php">Home</a>
                         </div>
@@ -240,10 +239,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="menu_content">
                             <a class="btn_text_Contact2" href="#footer">Contact</a>
                             <a class="btn_text_AboutUs2" href="index.php#about-us">About Us</a>
-                            <a class="btn_text_Offers2" href="Offers.php">Offers</a>
                             <a class="btn_text_Shop2" href="Shop.php">Shop</a>
                             <a class="btn_text_Home2" href="index.php">Home</a>
-                            <a href="#" class="account_LoginRegister">Login/Register</a>
                         </div>
                     </div>
                 </div>

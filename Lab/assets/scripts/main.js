@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (currentPage === 'Shop') {
-        setActiveButton('Shop');
+    setActiveButton('Shop');
     } else {
         function checkVisibleSection() {
             let currentSectionId = null;

@@ -1,17 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Показ/приховування меню
-    const menuButton = document.querySelector('.menu_button');
-    const menuContent = document.querySelector('.menu_content');
-    if (menuButton && menuContent) {
-        menuButton.addEventListener('click', () => {
-            menuContent.style.display = menuContent.style.display === 'block' ? 'none' : 'block';
-        });
-        document.addEventListener('click', (e) => {
-            if (!menuContent.contains(e.target) && !menuButton.contains(e.target)) {
-                menuContent.style.display = 'none';
-            }
-        });
-    }
 
     // Підсвічування кнопок
     const navButtons = document.querySelectorAll('.pages a, .menu_content a:not(.account_LoginRegister)');
@@ -57,6 +44,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.account_LoginRegister')?.addEventListener('click', (e) => {
         e.preventDefault();
         window.location.href = 'index.php';
+    });
+
+    // Бургер-меню
+    const menuButton = document.querySelector(".menu_button");
+    const menuContent = document.querySelector(".menu_content");
+
+    menuButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        menuContent.style.display = menuContent.style.display === "block" ? "none" : "block";
+    });
+
+    menuContent.addEventListener("click", function (event) {
+        event.stopPropagation();
     });
 
     // Логіка кошика

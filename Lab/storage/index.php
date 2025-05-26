@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             logMessage("Помилка валідації: Пропущені обов'язкові поля.");
         } elseif ($password !== $confirm_password) {
             logMessage("Помилка валідації: Паролі не збігаються.");
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {  // перевірка на правильність введення ел пошти
             logMessage("Помилка валідації: Невірний формат email.");
         } else {
             $users = allUsers();
@@ -145,6 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head lang="uk">
@@ -227,7 +228,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="pages">
                         <a class="btn_text_Contact" href="#footer">Contact</a>
                         <a class="btn_text_AboutUs" href="#about-us">About Us</a>
-                        <a class="btn_text_Offers" href="Offers.php">Offers</a>
                         <a class="btn_text_Shop" href="Shop.php">Shop</a>
                         <a class="btn_text_Home" href="index.php">Home</a>
                     </div>
@@ -237,10 +237,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="menu_content">
                         <a class="btn_text_Contact2" href="#footer">Contact</a>
                         <a class="btn_text_AboutUs2" href="#about-us">About Us</a>
-                        <a class="btn_text_Offers2" href="Offers.php">Offers</a>
                         <a class="btn_text_Shop2" href="Shop.php">Shop</a>
                         <a class="btn_text_Home2" href="index.php">Home</a>
-                        <a href="#" class="account_LoginRegister">Login/Register</a>
                     </div>
                 </div>
             </div>
@@ -249,9 +247,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="frame2">
                 <div class="frame2_text_btn">
                     <p class="frame2_text">Explore our products and win rewards for each and every purchase, only limited deals available!</p>
-                    <a class="btn_frame2" href="#">
+                    <!-- <a class="btn_frame2" href="#">
                         <p class="btn_frame2_text">Claim now</p>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <div class="frame3">
