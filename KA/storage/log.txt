@@ -1,0 +1,70 @@
+2025-05-14 09:08:31 - Новий користувач зареєстрований: kusnerovandrij@gmail.com
+2025-05-14 09:10:19 - Помилка: Email kusnerovandrij@gmail.com вже зареєстровано.
+2025-05-14 09:10:39 - Помилка: Email kusnerovandrij@gmail.com вже зареєстровано.
+2025-05-14 09:10:49 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-14 09:19:08 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-14 09:19:37 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-14 09:41:40 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-14 09:46:45 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-14 09:47:20 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-14 09:48:34 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-24 13:30:07 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-24 16:03:26 - Помилка валідації: Паролі не збігаються.
+2025-05-24 16:03:51 - Помилка: Email kusnerovandrij@gmail.com вже зареєстровано.
+2025-05-24 16:05:56 - Помилка: Email kusnerovandrij@gmail.com вже зареєстровано.
+2025-05-24 16:06:42 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-24 16:08:48 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-24 16:08:51 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-24 16:13:40 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-24 16:13:50 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-24 17:31:34 - Користувач вийшов.
+2025-05-24 17:31:49 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-24 17:37:02 - Користувач вийшов.
+2025-05-24 17:42:58 - Успішний вхід для email: kusnerovandrij@gmail.com
+2025-05-24 17:43:04 - Користувач вийшов.
+2025-05-24 17:43:22 - Помилка: Email kusnerovandrij@gmail.com вже зареєстровано.
+2025-05-24 17:43:37 - Помилка валідації: Паролі не збігаються.
+2025-05-24 17:44:22 - Новий користувач зареєстрований: kusnerovandrij802@gmail.com
+2025-05-24 17:45:25 - Користувач вийшов.
+2025-05-24 17:45:29 - Успішний вхід для email: kusnerovandrij802@gmail.com
+2025-05-24 19:36:23 - Користувач вийшов.
+2025-05-24 19:36:27 - Успішний вхід для email: kusnerovandrij802@gmail.com
+2025-05-24 22:19:00 - Користувач вийшов.
+2025-05-24 22:19:03 - Успішний вхід для email: kusnerovandrij802@gmail.com
+2025-05-27 15:38:22 - Некоректна дія: place_order
+2025-05-27 15:47:14 - Замовлення збережено для email: kusnerovandrij802@gmail.com
+2025-05-27 15:48:00 - Замовлення збережено для email: kusnerovandrij802@gmail.com
+2025-05-27 16:45:32 - Замовлення збережено для email: kusnerovandrij802@gmail.com
+2025-05-27 17:06:28 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 17:06:28 - Успішний вхід адміністратора: admin
+2025-05-27 17:06:33 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin12"}
+2025-05-27 17:06:33 - Помилка входу адміністратора: Невірний логін або пароль.
+2025-05-27 17:16:41 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin12"}
+2025-05-27 17:16:41 - Помилка входу адміністратора: Невірний логін або пароль.
+2025-05-27 17:16:41 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin12"}
+2025-05-27 17:16:41 - Помилка входу адміністратора: Невірний логін або пароль.
+2025-05-27 17:16:53 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 17:16:53 - Успішний вхід адміністратора: admin
+2025-05-27 17:18:16 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 17:18:16 - Успішний вхід адміністратора: admin
+2025-05-27 17:19:00 - Отримано POST-запит: {"action":"place_order","items":"[{\"name\":\"\u041a\u0430\u0440\u043f\u0430\u0442\u0441\u044c\u043a\u0438\u0439 \u0427\u043e\u0440\u043d\u0438\u0439\",\"price\":60,\"quantity\":1},{\"name\":\"\u0421\u043e\u043d\u044f\u0447\u043d\u0438\u0439 \u0417\u0435\u043b\u0435\u043d\u0438\u0439\",\"price\":75,\"quantity\":1},{\"name\":\"\u0421\u043b\u0430\u0432\u0430 \u0423\u043a\u0440\u0430\u0457\u043d\u0456\",\"price\":90,\"quantity\":1},{\"name\":\"\u041b\u0430\u0432\u0430\u043d\u0434\u043e\u0432\u0438\u0439 \u0423\u043b\u0443\u043d\",\"price\":110,\"quantity\":1},{\"name\":\"\u042f\u0433\u0456\u0434\u043d\u0438\u0439 \u041a\u0430\u0440\u043f\u0430\u0442\u0441\u044c\u043a\u0438\u0439\",\"price\":80,\"quantity\":1},{\"name\":\"\u041c'\u044f\u0442\u043d\u0438\u0439 \u0414\u0430\u0440\u0434\u0436\u0438\u043b\u0456\u043d\u0433\",\"price\":85,\"quantity\":1},{\"name\":\"\u0411\u0456\u043b\u0438\u0439 \u041f\u0456\u043e\u043d\",\"price\":120,\"quantity\":2},{\"name\":\"\u041c\u0430\u0442\u0447\u0430 Ceremonial\",\"price\":150,\"quantity\":2},{\"name\":\"\u0406\u043c\u0431\u0438\u0440\u043d\u0438\u0439 \u041b\u0430\u0439\u043c\",\"price\":65,\"quantity\":1}]"}
+2025-05-27 17:19:00 - Замовлення збережено для email: kusnerovandrij802@gmail.com, дані: {"email":"kusnerovandrij802@gmail.com","items":[{"name":"\u041a\u0430\u0440\u043f\u0430\u0442\u0441\u044c\u043a\u0438\u0439 \u0427\u043e\u0440\u043d\u0438\u0439","price":60,"quantity":1},{"name":"\u0421\u043e\u043d\u044f\u0447\u043d\u0438\u0439 \u0417\u0435\u043b\u0435\u043d\u0438\u0439","price":75,"quantity":1},{"name":"\u0421\u043b\u0430\u0432\u0430 \u0423\u043a\u0440\u0430\u0457\u043d\u0456","price":90,"quantity":1},{"name":"\u041b\u0430\u0432\u0430\u043d\u0434\u043e\u0432\u0438\u0439 \u0423\u043b\u0443\u043d","price":110,"quantity":1},{"name":"\u042f\u0433\u0456\u0434\u043d\u0438\u0439 \u041a\u0430\u0440\u043f\u0430\u0442\u0441\u044c\u043a\u0438\u0439","price":80,"quantity":1},{"name":"\u041c'\u044f\u0442\u043d\u0438\u0439 \u0414\u0430\u0440\u0434\u0436\u0438\u043b\u0456\u043d\u0433","price":85,"quantity":1},{"name":"\u0411\u0456\u043b\u0438\u0439 \u041f\u0456\u043e\u043d","price":120,"quantity":2},{"name":"\u041c\u0430\u0442\u0447\u0430 Ceremonial","price":150,"quantity":2},{"name":"\u0406\u043c\u0431\u0438\u0440\u043d\u0438\u0439 \u041b\u0430\u0439\u043c","price":65,"quantity":1}],"total":1105,"timestamp":"2025-05-27 17:19:00"}
+2025-05-27 17:19:15 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 17:19:15 - Успішний вхід адміністратора: admin
+2025-05-27 17:24:09 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 17:24:09 - Успішний вхід адміністратора: admin
+2025-05-27 17:24:15 - Користувач або адміністратор вийшов.
+2025-05-27 17:25:34 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 17:25:34 - Успішний вхід адміністратора: admin
+2025-05-27 17:26:14 - Успішний вхід для email: kusnerovandrij802@gmail.com
+2025-05-27 17:26:19 - Отримано POST-запит: {"action":"place_order","items":"[{\"name\":\"\u042f\u0433\u0456\u0434\u043d\u0438\u0439 \u041a\u0430\u0440\u043f\u0430\u0442\u0441\u044c\u043a\u0438\u0439\",\"price\":80,\"quantity\":1},{\"name\":\"\u041b\u0430\u0432\u0430\u043d\u0434\u043e\u0432\u0438\u0439 \u0423\u043b\u0443\u043d\",\"price\":110,\"quantity\":1},{\"name\":\"\u041c'\u044f\u0442\u043d\u0438\u0439 \u0414\u0430\u0440\u0434\u0436\u0438\u043b\u0456\u043d\u0433\",\"price\":85,\"quantity\":1}]"}
+2025-05-27 17:26:19 - Замовлення збережено для email: kusnerovandrij802@gmail.com, дані: {"email":"kusnerovandrij802@gmail.com","items":[{"name":"\u042f\u0433\u0456\u0434\u043d\u0438\u0439 \u041a\u0430\u0440\u043f\u0430\u0442\u0441\u044c\u043a\u0438\u0439","price":80,"quantity":1},{"name":"\u041b\u0430\u0432\u0430\u043d\u0434\u043e\u0432\u0438\u0439 \u0423\u043b\u0443\u043d","price":110,"quantity":1},{"name":"\u041c'\u044f\u0442\u043d\u0438\u0439 \u0414\u0430\u0440\u0434\u0436\u0438\u043b\u0456\u043d\u0433","price":85,"quantity":1}],"total":275,"timestamp":"2025-05-27 17:26:19"}
+2025-05-27 17:26:34 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 17:26:34 - Успішний вхід адміністратора: admin
+2025-05-27 17:27:51 - Користувач або адміністратор вийшов.
+2025-05-27 17:28:10 - Успішний вхід для email: kusnerovandrij802@gmail.com
+2025-05-27 17:29:08 - Отримано POST-запит: {"action":"place_order","items":"[{\"name\":\"\u0421\u043e\u043d\u044f\u0447\u043d\u0438\u0439 \u0417\u0435\u043b\u0435\u043d\u0438\u0439\",\"price\":75,\"quantity\":7}]"}
+2025-05-27 17:29:08 - Замовлення збережено для email: kusnerovandrij802@gmail.com, дані: {"email":"kusnerovandrij802@gmail.com","items":[{"name":"\u0421\u043e\u043d\u044f\u0447\u043d\u0438\u0439 \u0417\u0435\u043b\u0435\u043d\u0438\u0439","price":75,"quantity":7}],"total":525,"timestamp":"2025-05-27 17:29:08"}
+2025-05-27 17:29:20 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 17:29:20 - Успішний вхід адміністратора: admin
+2025-05-27 17:32:40 - Користувач або адміністратор вийшов.

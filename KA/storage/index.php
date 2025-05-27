@@ -1,149 +1,221 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
+   header('Content-Type: text/html; charset=utf-8');
 
-// Запускаємо сесію
-session_start();
+   // Запускаємо сесію
+   session_start();
 
-const REGISTER_FILE = __DIR__ . '/register.txt';
-const LOG_FILE = __DIR__ . '/log.txt';
+   const REGISTER_FILE = __DIR__ . '/register.txt';
+   const LOG_FILE = __DIR__ . '/log.txt';
+   const ORDERS_FILE = __DIR__ . '/orders.txt';
 
-/**
- * Отримує всіх зареєстрованих користувачів
- * @return array
- */
-function allUsers() {
-    if (!file_exists(REGISTER_FILE)) {
-        return [];
-    }
+   /**
+    * Отримує всіх зареєстрованих користувачів
+    * @return array
+    */
+   function allUsers() {
+       if (!file_exists(REGISTER_FILE)) {
+           return [];
+       }
 
-    $data = file_get_contents(REGISTER_FILE);
-    $users = @unserialize($data);
+       $data = file_get_contents(REGISTER_FILE);
+       $users = @unserialize($data);
 
-    return is_array($users) ? $users : [];
-}
+       return is_array($users) ? $users : [];
+   }
 
-/**
- * Додає нового користувача
- * @param array $params
- */
-function addUser($params) {
-    $users = allUsers();
-    $users[] = $params;
-    file_put_contents(REGISTER_FILE, serialize($users));
-}
+   /**
+    * Додає нового користувача
+    * @param array $params
+    */
+   function addUser($params) {
+       $users = allUsers();
+       $users[] = $params;
+       file_put_contents(REGISTER_FILE, serialize($users));
+   }
 
-/**
- * Логує повідомлення для налагодження
- * @param string $message
- */
-function logMessage($message) {
-    file_put_contents(LOG_FILE, date('Y-m-d H:i:s') . " - " . $message . PHP_EOL, FILE_APPEND | LOCK_EX);
-}
+   /**
+    * Логує повідомлення для налагодження
+    * @param string $message
+    */
+   function logMessage($message) {
+       file_put_contents(LOG_FILE, date('Y-m-d H:i:s') . " - " . $message . PHP_EOL, FILE_APPEND | LOCK_EX);
+   }
 
-// Перевірка доступності файлів
-if (!is_writable(__DIR__) || (file_exists(REGISTER_FILE) && !is_writable(REGISTER_FILE)) || (file_exists(LOG_FILE) && !is_writable(LOG_FILE))) {
-    logMessage("Помилка: Файли register.txt або log.txt недоступні для запису.");
-    exit;
-}
+   /**
+    * Зберігає замовлення у файл orders.txt
+    * @param array $order
+    */
+   function saveOrder($order) {
+       $orderData = json_encode($order, JSON_UNESCAPED_UNICODE) . PHP_EOL;
+       file_put_contents(ORDERS_FILE, $orderData, FILE_APPEND | LOCK_EX);
+   }
 
-// Ініціалізація $loggedInUser із сесії
-$loggedInUser = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+   // Перевірка доступності файлів
+   if (!is_writable(__DIR__) || (file_exists(REGISTER_FILE) && !is_writable(REGISTER_FILE)) || 
+       (file_exists(LOG_FILE) && !is_writable(LOG_FILE)) || (file_exists(ORDERS_FILE) && !is_writable(ORDERS_FILE))) {
+       logMessage("Помилка: Файли register.txt, log.txt або orders.txt недоступні для запису.");
+       exit;
+   }
 
-// Обробка GET-запиту для logout
-if (isset($_GET['action']) && $_GET['action'] === 'logout' && $loggedInUser) {
-    session_destroy();
-    $loggedInUser = null;
-    unset($_SESSION['user']);
-    logMessage("Користувач вийшов.");
-    header('Location: ' . $_SERVER['PHP_SELF']);
-    exit;
-}
+   // Ініціалізація $loggedInUser із сесії
+   $loggedInUser = isset($_SESSION['user']) ? $_SESSION['user'] : null;
+   $loggedInAdmin = isset($_SESSION['admin']) ? $_SESSION['admin'] : null;
 
-// Обробка форми
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = isset($_POST['action']) ? trim($_POST['action']) : '';
+   // Обробка GET-запиту для logout
+   if (isset($_GET['action']) && $_GET['action'] === 'logout' && $loggedInUser) {
+       session_destroy();
+       $loggedInUser = null;
+       $loggedInAdmin = null;
+       unset($_SESSION['user']);
+       unset($_SESSION['admin']);
+       logMessage("Користувач або адміністратор вийшов.");
+       header('Location: ' . $_SERVER['PHP_SELF']);
+       exit;
+   }
 
-    if ($action === 'register') {
-        $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-        $password = isset($_POST['password']) ? trim($_POST['password']) : '';
-        $confirm_password = isset($_POST['confirm_password']) ? trim($_POST['confirm_password']) : '';
-        $name = isset($_POST['name']) ? trim($_POST['name']) : '';
+   // Обробка форми
+   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+       logMessage("Отримано POST-запит: " . json_encode($_POST));
+       $action = isset($_POST['action']) ? trim($_POST['action']) : '';
 
-        if (!$email || !$password || !$confirm_password || !$name) {
-            logMessage("Помилка валідації: Пропущені обов'язкові поля.");
-        } elseif ($password !== $confirm_password) {
-            logMessage("Помилка валідації: Паролі не збігаються.");
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {  // перевірка на правильність введення ел пошти
-            logMessage("Помилка валідації: Невірний формат email.");
-        } else {
-            $users = allUsers();
-            $emailExists = false;
-            foreach ($users as $user) {
-                if ($user['email'] === $email) {
-                    $emailExists = true;
-                    break;
-                }
-            }
-            if ($emailExists) {
-                logMessage("Помилка: Email $email вже зареєстровано.");
-            } else {
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                $userData = [
-                    'email' => $email,
-                    'name' => $name,
-                    'password' => $hashedPassword
-                ];
-                addUser($userData);
-                logMessage("Новий користувач зареєстрований: $email");
-                $_SESSION['user'] = [
-                    'email' => $email,
-                    'name' => $name
-                ];
-                $loggedInUser = $_SESSION['user'];
-                header('Location: ' . $_SERVER['PHP_SELF']);
-                exit;
-            }
-        }
-    } elseif ($action === 'login') {
-        $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-        $password = isset($_POST['password']) ? trim($_POST['password']) : '';
+       if ($action === 'register') {
+           $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+           $password = isset($_POST['password']) ? trim($_POST['password']) : '';
+           $confirm_password = isset($_POST['confirm_password']) ? trim($_POST['confirm_password']) : '';
+           $name = isset($_POST['name']) ? trim($_POST['name']) : '';
 
-        if (!$email || !$password) {
-            logMessage("Помилка валідації: Пропущені обов'язкові поля.");
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            logMessage("Помилка валідації: Невірний формат email.");
-        } else {
-            $users = allUsers();
-            $userFound = false;
-            $passwordCorrect = false;
-            foreach ($users as $user) {
-                if ($user['email'] === $email) {
-                    $userFound = true;
-                    if (password_verify($password, $user['password'])) {
-                        $passwordCorrect = true;
-                        $_SESSION['user'] = [
-                            'email' => $user['email'],
-                            'name' => $user['name'] ?? ''
-                        ];
-                        $loggedInUser = $_SESSION['user'];
-                    }
-                    break;
-                }
-            }
-            if (!$userFound) {
-                logMessage("Помилка входу: Email $email не знайдено.");
-            } elseif (!$passwordCorrect) {
-                logMessage("Помилка входу: Невірний пароль для $email");
-            } else {
-                logMessage("Успішний вхід для email: $email");
-                header('Location: ' . $_SERVER['PHP_SELF']);
-                exit;
-            }
-        }
-    } else {
-        logMessage("Некоректна дія: $action");
-    }
-}
+           if (!$email || !$password || !$confirm_password || !$name) {
+               logMessage("Помилка валідації: Пропущені обов'язкові поля.");
+           } elseif ($password !== $confirm_password) {
+               logMessage("Помилка валідації: Паролі не збігаються.");
+           } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+               logMessage("Помилка валідації: Невірний формат email.");
+           } else {
+               $users = allUsers();
+               $emailExists = false;
+               foreach ($users as $user) {
+                   if ($user['email'] === $email) {
+                       $emailExists = true;
+                       break;
+                   }
+               }
+               if ($emailExists) {
+                   logMessage("Помилка: Email $email вже зареєстровано.");
+               } else {
+                   $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                   $userData = [
+                       'email' => $email,
+                       'name' => $name,
+                       'password' => $hashedPassword
+                   ];
+                   addUser($userData);
+                   logMessage("Новий користувач зареєстрований: $email");
+                   $_SESSION['user'] = [
+                       'email' => $email,
+                       'name' => $name
+                   ];
+                   $loggedInUser = $_SESSION['user'];
+                   header('Location: ' . $_SERVER['PHP_SELF']);
+                   exit;
+               }
+           }
+       } elseif ($action === 'login') {
+           $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+           $password = isset($_POST['password']) ? trim($_POST['password']) : '';
+
+           if (!$email || !$password) {
+               logMessage("Помилка валідації: Пропущені обов'язкові поля.");
+           } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+               logMessage("Помилка валідації: Невірний формат email.");
+           } else {
+               $users = allUsers();
+               $userFound = false;
+               $passwordCorrect = false;
+               foreach ($users as $user) {
+                   if ($user['email'] === $email) {
+                       $userFound = true;
+                       if (password_verify($password, $user['password'])) {
+                           $passwordCorrect = true;
+                           $_SESSION['user'] = [
+                               'email' => $user['email'],
+                               'name' => $user['name'] ?? ''
+                           ];
+                           $loggedInUser = $_SESSION['user'];
+                       }
+                       break;
+                   }
+               }
+               if (!$userFound) {
+                   logMessage("Помилка входу: Email $email не знайдено.");
+               } elseif (!$passwordCorrect) {
+                   logMessage("Помилка входу: Невірний пароль для $email");
+               } else {
+                   logMessage("Успішний вхід для email: $email");
+                   header('Location: ' . $_SERVER['PHP_SELF']);
+                   exit;
+               }
+           }
+       } elseif ($action === 'admin_login') {
+           $adminLogin = isset($_POST['admin_login']) ? trim($_POST['admin_login']) : '';
+           $adminPassword = isset($_POST['admin_password']) ? trim($_POST['admin_password']) : '';
+
+           // закодовані дані адміністратора (у реальному проєкті використовуйте безпечне зберігання)
+           $correctAdminLogin = 'admin';
+           $correctAdminPassword = 'admin123'; // У реальному проєкті має використовуватись password_hash
+
+           if (!$adminLogin || !$adminPassword) {
+               logMessage("Помилка валідації адміністратора: Пропущені обов'язкові поля.");
+           } elseif ($adminLogin !== $correctAdminLogin || $adminPassword !== $correctAdminPassword) {
+               logMessage("Помилка входу адміністратора: Невірний логін або пароль.");
+           } else {
+               $_SESSION['admin'] = [
+                   'login' => $adminLogin
+               ];
+               $loggedInAdmin = $_SESSION['admin'];
+               logMessage("Успішний вхід адміністратора: $adminLogin");
+               header('Location: /MyProject/KA/storage/admin.php'); // Перенаправлення на адмін-панель
+               exit;
+           }
+       } elseif ($action === 'place_order') {
+           if (!$loggedInUser) {
+               logMessage("Помилка: Користувач не авторизований для оформлення замовлення.");
+               header('Content-Type: application/json');
+               echo json_encode(['success' => false, 'message' => 'Потрібно увійти в систему.']);
+               exit;
+           }
+
+           $orderItems = isset($_POST['items']) ? json_decode($_POST['items'], true) : [];
+           if (empty($orderItems)) {
+               logMessage("Помилка: Кошик порожній або невалідні дані items: " . json_encode($_POST['items']));
+               header('Content-Type: application/json');
+               echo json_encode(['success' => false, 'message' => 'Кошик порожній.']);
+               exit;
+           }
+
+           $order = [
+               'email' => $loggedInUser['email'],
+               'items' => $orderItems,
+               'total' => array_sum(array_map(function($item) {
+                   return $item['price'] * $item['quantity'];
+               }, $orderItems)),
+               'timestamp' => date('Y-m-d H:i:s')
+           ];
+
+           try {
+               saveOrder($order);
+               logMessage("Замовлення збережено для email: {$loggedInUser['email']}, дані: " . json_encode($order));
+               header('Content-Type: application/json');
+               echo json_encode(['success' => true, 'message' => 'Замовлення успішно оформлено.']);
+           } catch (Exception $e) {
+               logMessage("Помилка при збереженні замовлення: " . $e->getMessage());
+               header('Content-Type: application/json');
+               echo json_encode(['success' => false, 'message' => 'Помилка сервера при збереженні замовлення.']);
+           }
+           exit;
+       } else {
+           logMessage("Некоректна дія: $action");
+       }
+   }
 ?>
 
 <!DOCTYPE html>
@@ -190,6 +262,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="cart-footer">
                                     <p class="cart-total">Загалом: 0 грн</p>
                                     <button class="cart-clear">Очистити кошик</button>
+                                    <button class="cart-buy">Оформити замовлення</button>
                                 </div>
                             </div>
                         </div>
@@ -350,6 +423,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <a class="account_LoginRegister" href="#">Login / Register</a>
                         <a class="account_Logout <?php echo isset($loggedInUser) ? '' : 'disabled'; ?>" 
                            <?php echo isset($loggedInUser) ? 'href="?action=logout"' : 'title="Увійдіть, щоб вийти"'; ?>>Logout</a>
+                        <a class="account_Admin" href="#">Admin</a>
                     </div>
                 </div>
                 <div class="findUs">
@@ -407,6 +481,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" name="password" placeholder="Password" required>
                 <input type="password" name="confirm_password" placeholder="Repeat the password" required>
                 <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальне вікно адміністратора -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" data-modal-id="adminModal">×</span>
+            <h2>Admin Login</h2>
+            <form id="adminLoginForm" method="POST" action="/MyProject/KA/storage/index.php">
+                <input type="hidden" name="action" value="admin_login">
+                <input type="text" name="admin_login" placeholder="Admin Login" required>
+                <input type="password" name="admin_password" placeholder="Admin Password" required>
+                <button type="submit">Sign in as Admin</button>
             </form>
         </div>
     </div>

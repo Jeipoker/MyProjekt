@@ -192,6 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <div class="cart-footer">
                                         <p class="cart-total">Загалом: 0 грн</p>
                                         <button class="cart-clear">Очистити кошик</button>
+                                        <button class="cart-buy">Оформити замовлення</button>
                                     </div>
                                 </div>
                             </div>

@@ -252,6 +252,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Обробка кнопки Admin
+    const adminButton = document.querySelector('.account_Admin');
+    if (adminButton) {
+        console.log('Кнопка .account_Admin знайдена, додаємо обробник');
+        adminButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Клік на Admin, відкриваємо adminModal');
+            showModal('adminModal');
+        });
+    } else {
+        console.log('Кнопка .account_Admin не знайдена в DOM');
+    }
+
     // Логіка кошика
     const cart = {
         items: JSON.parse(localStorage.getItem('cart')) || [],
@@ -261,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 localStorage.setItem('cart', JSON.stringify(this.items));
             } catch (e) {}
         },
-        
+
         add(item) {
             if (!item?.name || isNaN(item?.price)) {
                 return;
@@ -285,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.appendChild(notification);
             setTimeout(() => notification.remove(), 3000);
         },
-        
+
         remove(name) {
             const item = this.items.find(i => i.name === name);
             if (item) {
@@ -297,26 +310,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.updateUI();
             }
         },
-        
+
         clear() {
             this.items = [];
             this.save();
             this.updateUI();
         },
-        
+
         getTotal() {
             return this.items.reduce((total, item) => total + (item.price || 0) * (item.quantity || 0), 0);
         },
-        
+
         getCount() {
             return this.items.reduce((count, item) => count + (item.quantity || 0), 0);
         },
-        
+
         updateUI() {
             const cartItems = document.querySelector('.cart-items');
             const cartCount = document.querySelector('.cart-count');
             const cartTotal = document.querySelector('.cart-total');
-            
+
             if (cartItems) {
                 cartItems.innerHTML = this.items.length ? 
                     this.items.map(item => `
@@ -327,15 +340,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     `).join('') : 
                     '<p>Кошик порожній</p>';
             }
-            
+
             if (cartCount) {
                 cartCount.textContent = this.getCount();
             }
-            
+
             if (cartTotal) {
                 cartTotal.textContent = `Загалом: ${this.getTotal()} грн`;
             }
-            
+
             document.querySelectorAll('.cart-remove').forEach(button => {
                 button.removeEventListener('click', button._cartRemoveHandler);
                 button._cartRemoveHandler = () => {
@@ -343,6 +356,41 @@ document.addEventListener('DOMContentLoaded', function () {
                     this.remove(name);
                 };
                 button.addEventListener('click', button._cartRemoveHandler);
+            });
+        },
+
+        placeOrder() {
+            if (!window.loggedInUser) {
+                alert('Будь ласка, увійдіть в систему для оформлення замовлення.');
+                return;
+            }
+            if (this.items.length === 0) {
+                alert('Кошик порожній.');
+                return;
+            }
+
+            fetch('/MyProject/KA/storage/index.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'action': 'place_order',
+                    'items': JSON.stringify(this.items)
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    this.clear();
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Помилка при оформленні замовлення:', error);
+                alert('Сталася помилка при оформленні замовлення.');
             });
         }
     };
@@ -364,6 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const cartDropdown = document.querySelector('.cart-dropdown');
     const cartClose = document.querySelector('.cart-close');
     const cartClear = document.querySelector('.cart-clear');
+    const cartBuy = document.querySelector('.cart-buy');
 
     if (cartButton && cartModal && cartDropdown) {
         cartButton.addEventListener('click', (e) => {
@@ -384,6 +433,14 @@ document.addEventListener('DOMContentLoaded', function () {
         cartClear.addEventListener('click', (e) => {
             e.stopPropagation();
             cart.clear();
+            cartModal.classList.remove('open');
+        });
+    }
+
+    if (cartBuy && cartModal) {
+        cartBuy.addEventListener('click', (e) => {
+            e.stopPropagation();
+            cart.placeOrder();
             cartModal.classList.remove('open');
         });
     }

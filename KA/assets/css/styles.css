@@ -219,6 +219,7 @@ header {
     color: #004F44;
 }
 .cart-clear {
+    margin-bottom: 10px;
     width: 100%;
     padding: 8px;
     background-color: #592222;
@@ -227,8 +228,21 @@ header {
     border-radius: 5px;
     cursor: pointer;
 }
+.cart-buy {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    background-color: #6C757D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .cart-clear:hover {
     background-color: #592222;
+}
+.cart-buy:hover {
+    background-color: #6C757D;
 }
 .tea_cup {
     position: absolute;
@@ -842,7 +856,15 @@ header {
     font-weight: 500;
     position: relative;
 }
-.account_MyAccount::after, .account_LoginRegister::after, .account_Logout::after {
+.account_Admin {
+    margin-top: 10px;
+    text-decoration: none;
+    color: #000;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    position: relative;
+}
+.account_MyAccount::after, .account_LoginRegister::after, .account_Logout::after, .account_Admin::after {
     content: "";
     position: absolute;
     bottom: -2px;
@@ -853,7 +875,7 @@ header {
     background-color: rgba(128, 128, 128, 0.3);
     transition: width 0.4s ease;
 }
-.account_MyAccount:hover::after, .account_LoginRegister:hover::after, .account_Logout:hover::after{
+.account_MyAccount:hover::after, .account_LoginRegister:hover::after, .account_Logout:hover::after, .account_Admin:hover::after {
     width: 100%;
 }
 .findUs {
