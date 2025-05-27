@@ -252,17 +252,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Обробка кнопки Admin
     const adminButton = document.querySelector('.account_Admin');
     if (adminButton) {
-        console.log('Кнопка .account_Admin знайдена, додаємо обробник');
         adminButton.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log('Клік на Admin, відкриваємо adminModal');
             showModal('adminModal');
         });
-    } else {
-        console.log('Кнопка .account_Admin не знайдена в DOM');
     }
 
     // Логіка кошика

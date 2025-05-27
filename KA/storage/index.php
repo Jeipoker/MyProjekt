@@ -159,9 +159,11 @@
            $adminLogin = isset($_POST['admin_login']) ? trim($_POST['admin_login']) : '';
            $adminPassword = isset($_POST['admin_password']) ? trim($_POST['admin_password']) : '';
 
-           // закодовані дані адміністратора (у реальному проєкті використовуйте безпечне зберігання)
+           
+
+           // закодовані дані адміністратора (має використоувватись безпечне зберігання)
            $correctAdminLogin = 'admin';
-           $correctAdminPassword = 'admin123'; // У реальному проєкті має використовуватись password_hash
+           $correctAdminPassword = 'admin123'; // У реальності має використовуватись password_hash
 
            if (!$adminLogin || !$adminPassword) {
                logMessage("Помилка валідації адміністратора: Пропущені обов'язкові поля.");

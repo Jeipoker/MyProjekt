@@ -68,3 +68,9 @@
 2025-05-27 17:29:20 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
 2025-05-27 17:29:20 - Успішний вхід адміністратора: admin
 2025-05-27 17:32:40 - Користувач або адміністратор вийшов.
+2025-05-27 20:28:43 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 20:28:43 - Успішний вхід адміністратора: admin
+2025-05-27 20:29:50 - Отримано POST-запит: {"action":"admin_login","admin_login":"kusnerovandrij802@gmail.com","admin_password":"Vektor228"}
+2025-05-27 20:29:50 - Помилка входу адміністратора: Невірний логін або пароль.
+2025-05-27 20:30:12 - Отримано POST-запит: {"action":"admin_login","admin_login":"admin","admin_password":"admin123"}
+2025-05-27 20:30:12 - Успішний вхід адміністратора: admin
