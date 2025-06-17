@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Visit cards</title>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h2>Тестування для учнів початеових класів</h2>
+        <p>Виберіть правильне значення виразу: 10 ÷ 5</p>
+        <form>
+            <select name="answer" id="answerSelect" size="3">
+                <option value="0">0</option>
+                <option value="1">2</option>
+                <option value="2">4</option>
+            </select>
+            <br><br>
+            <input type="button" value="Перевірити" onclick="checkAnswer()">
+        </form>
+        <p id="result"></p>   
+
+    <script src="scripts/main.js"></script>
+    </body>
+</html>

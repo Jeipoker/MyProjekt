@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Visit cards</title>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h1>Обчислення суми двох чисел</h1>
+        <form onsubmit="return calculateSum(event)">
+            <table border="0">
+                <tr>
+                    <td align="left">Перше число:</td>
+                    <td align="right"><input type="number" name="number1" id="number1" size="11" required></td>
+                </tr>
+                <tr>
+                    <td align="left">Друге число:</td>
+                    <td align="right"><input type="number" name="number2" id="number2" size="11" required></td>
+                </tr>
+                <tr>
+                    <td align="left">Сума:</td>
+                    <td align="right"><input type="text" name="result" id="result" size="11" readonly></td>
+                </tr>
+                <tr align="center">
+                    <td align="left"><input type="submit" value="Обчислити"></td>
+                    <td align="right"><input type="reset" value="Очистити" onclick="clearResult()"></td>
+                </tr>
+            </table>
+        </form>
+        <p id="resultMessage"></p>
+
+    <script src="scripts/main.js"></script>
+    </body>
+</html>

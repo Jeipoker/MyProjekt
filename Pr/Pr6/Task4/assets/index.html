@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Visit cards</title>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h1>Реєстрація нового користувача</h1>
+        <form method="POST" action="zaglushka.html" onsubmit="return validateForm()">
+            <table>
+                <tr>
+                    <td align="left">Ім'я:</td>
+                    <td align="right"><input type="text" name="firstName" id="firstName" size="11" required></td>
+                </tr>
+                <tr>
+                    <td align="left">Прізвище:</td>
+                    <td align="right"><input type="text" name="lastName" id="lastName" size="11" required></td>
+                </tr>
+                <tr>
+                    <td align="left">Email:</td>
+                    <td align="right"><input type="email" name="email" id="email" size="11" required></td>
+                </tr>
+                <tr>
+                    <td align="left">Ім'я користувача:</td>
+                    <td align="right"><input type="text" name="username" id="username" size="11" required></td>
+                </tr>
+                <tr>
+                    <td align="left">Пароль:</td>
+                    <td align="right"><input type="password" name="password" id="password" size="11" required></td>
+                </tr>
+                <tr>
+                    <td align="left">Підтвердження пароля:</td>
+                    <td align="right"><input type="password" name="confirmPassword" id="confirmPassword" size="11" required></td>
+                </tr>
+                <tr align="center">
+                    <td align="left"><input type="submit" value="Зареєструватися"></td>
+                    <td align="right"><input type="reset" value="Очистити"></td>
+                </tr>
+            </table>
+        </form>
+        <p id="result"></p>
+
+    <script src="scripts/main.js"></script>
+    </body>
+</html>

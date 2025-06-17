@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Visit cards</title>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <h1>Відправлення електронної пошти</h1>
+        <form method="GET" action="mailto:kusnerovandrij802@gmail.com" onsubmit="return validateForm()">
+            <table border="0">
+                <tr>
+                    <td align="left">Ваша адреса email:</td>
+                    <td align="right"><input type="email" name="email" id="email" size="11" required></td>
+                </tr>
+                <tr>
+                    <td align="left">Тема листа:</td>
+                    <td align="right"><input type="text" name="subject" id="subject" size="11"></td>
+                </tr>
+                <tr>
+                    <td align="left">Текст листа:</td>
+                    <td align="right"><textarea name="body" id="body" rows="4" cols="20"></textarea></td>
+                </tr>
+                <tr align="center">
+                    <td align="left"><input type="submit" value="Відправити"></td>
+                    <td align="right"><input type="reset" value="Очистити" onclick="clearMessage()"></td>
+                </tr>
+            </table>
+        </form>
+        <p id="resultMessage"></p>
+
+    <script src="scripts/main.js"></script>
+    </body>
+</html>
